@@ -15,14 +15,14 @@ class FitProgram:
             elif ans == 2:
                 self.user.activityList.print()
             elif ans == 3:
-                pass
+                self.profile()
             elif ans == 4:
                 return
 
     def menu_main(self):
         while True:
             print("\t", self.user.name)
-            print("Вага: ", self.user.weight)
+            print("Вага: ", self.user.weightDynamic[-1][0])
             print("Бали: ", self.user.pointS)
             print("Км: ", self.user.distanceS)
             print("Ккал: ", self.user.ccalS)
@@ -33,6 +33,40 @@ class FitProgram:
                 self.user.addActivity()
             elif ans == 2:
                 return
+
+    def profile(self):
+        while True:
+            print(self.user.name)
+            try:
+                print("Male" if self.user.sex == 1 else "Female")
+            except:
+                pass
+            try:
+                print("Ріст: ", self.user.height)
+            except:
+                pass
+            try:
+                print("Дата народження:", self.user.birthday.strftime("%d %b %Y"))
+            except:
+                pass
+            print("1. Динаміка ваги \n2. Додати поточну вагу\n3. Назад")
+            ans = int(input())
+            if ans == 1:
+                print("1. За рік \n2. За місяць")
+                ans1 = int(input())
+                if ans1 == 1:
+                    li = self.user.lastYearWeightDynamic()
+                    for i in li:
+                        print(i)
+                else:
+                    li = self.user.lastMonthWeightDynamic()
+                    for i in li:
+                        print(i)
+            if ans == 2:
+                self.user.setWeight(int(input("Введіть поточну вагу:")))
+            else:
+                return
+
 
 
 program = FitProgram()

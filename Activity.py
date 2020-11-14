@@ -22,7 +22,6 @@ class Activity:
         print("Кінець:")
         self.e = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
         self.time = self.e - self.s
-        # self.note = input("Замітка: ")
 
     def start(self):
         self.s = datetime.now()
@@ -30,7 +29,29 @@ class Activity:
     def end(self):
         self.e = datetime.now()
         self.time = self.e - self.s
-        # self.note = input("Замітка: ")
+
+    def multiplier(self):
+        pass
+
+
+class Aerobic(Activity):
+    def __init__(self, p):
+        super().__init__(p)
+        self.name = "Аеробіка"
+
+    def multiplier(self):
+        self.ccal = self.time.seconds / 60 * 8
+        self.points = self.time.seconds / 60 * 4
+
+
+class CrossFit(Activity):
+    def __init__(self, p):
+        super().__init__(p)
+        self.name = "Кросфіт"
+
+    def multiplier(self):
+        self.ccal = self.time.seconds / 60 * 15
+        self.points = self.time.seconds / 60
 
 
 class MovingEx(Activity):
@@ -40,33 +61,31 @@ class MovingEx(Activity):
 
     def setDistance(self, d):
         self.distance = d  # Далність задається в кілометрах
-        #self.persone.distanceS += self.distance
+        # self.persone.distanceS += self.distance
 
 
 class Running(MovingEx):
     def __init__(self, p):
         super().__init__(p)
         self.name = "Біг"
-        self.multiplier()
 
     def multiplier(self):
-        self.ccal = self.distance * self.persone.weight
+        self.ccal = self.distance * self.persone.weightDynamic[-1][0]
         self.points = self.distance * 100
-        #self.persone.pointS += self.points
-        #self.persone.ccalS += self.ccal
+        # self.persone.pointS += self.points
+        # self.persone.ccalS += self.ccal
 
 
 class Walking(MovingEx):
     def __init__(self, p):
         super().__init__(p)
         self.name = "Ходьба"
-        self.multiplier()
 
     def multiplier(self):
-        self.ccal = self.distance * self.persone.weight * 0.5
+        self.ccal = self.distance * self.persone.weightDynamic[-1][0] * 0.5
         self.points = self.distance * 50
-        #self.persone.pointS += self.points
-        #self.persone.ccalS += self.ccal
+        # self.persone.pointS += self.points
+        # self.persone.ccalS += self.ccal
 
 
 class Cycling(MovingEx):
@@ -75,21 +94,20 @@ class Cycling(MovingEx):
         self.speed = 0
         self.name = "Велосипед"
         self.setSpeed(int(input("km/h: ")))
-        self.multiplier()
 
     def setSpeed(self, s):
         self.speed = s
 
     def multiplier(self):
         if self.speed > 25:
-            self.ccal = self.distance / self.speed * self.persone.weight * 12
+            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 12
         elif self.speed > 20:
-            self.ccal = self.distance / self.speed * self.persone.weight * 10
+            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 10
         elif self.speed > 15:
-            self.ccal = self.distance / self.speed * self.persone.weight * 8
+            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 8
         else:
-            self.ccal = self.distance / self.speed * self.persone.weight * 6
+            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 6
 
         self.points = self.distance * 10
-        #self.persone.pointS += self.points
-        #self.persone.ccalS += self.ccal
+        # self.persone.pointS += self.points
+        # self.persone.ccalS += self.ccal
