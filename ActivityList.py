@@ -39,6 +39,7 @@ class ActivityList:
 
     def print(self):
         for act in self.li:
+            print(act.name)
             print(act.date.strftime("%d %B"), ", ", act.s.strftime("%H:%M"), " - ", act.e.strftime("%H:%M"))
             print("Тривалість: ", act.time)
             try:

@@ -1,11 +1,12 @@
-from datetime import date
+import datetime
+#from datetime import date
 from Fitnes.ActivityList import ActivityList
-from Fitnes.Activity import Activity, Walking, Running, Cycling
+from Fitnes.Activity import CrossFit, Cycling, Aerobic, Running, Walking
 
 class Persone:
     def __init__(self, name, weight):
         self.name = name
-        self.weight = weight
+        self.weightDynamic = [[weight, datetime.date.today()]]
         self.activityList = ActivityList()
         self.distanceS = 0
         self.pointS = 0
@@ -14,7 +15,29 @@ class Persone:
     def addInfo(self):
         self.sex = int(input("Виберіть стать:\n 1.Чоловіча\n 2.Жіноча\n ->"))
         self.height = int(input("Зріст: "))
-        self.birthday = date(int(input("Рік: ")), int(input("Місяць: ")), int(input("День: ")))
+        self.birthday = datetime.date(int(input("Рік: ")), int(input("Місяць: ")), int(input("День: ")))
+
+    def setWeight(self, weight):
+        pair = [weight, datetime.date.today()]
+        self.weightDynamic.append(pair)
+
+    def lastMonthWeightDynamic(self):
+        li = []
+        for i in reversed(self.weightDynamic):
+            m = datetime.date(datetime.date.today().year, datetime.date.today().month - 1, datetime.date.today().day)
+            if i[1] < m:
+                return li
+            li.append(i)
+        return li
+
+    def lastYearWeightDynamic(self):
+        li = []
+        for i in reversed(self.weightDynamic):
+            m = datetime.date(datetime.date.today().year - 1, datetime.date.today().month, datetime.date.today().day)
+            if i[1] < m:
+                return li
+            li.append(i)
+        return li
 
     def calculate_points(self, start, end): # start - end період, під час якого будуть рахуватись points
         points = 0
@@ -45,11 +68,15 @@ class Persone:
         for act in self.activityList.ldlist:
             self.pointS += act.points
             self.ccalS += act.ccal
-            self.distanceS += act.distance
+            try:
+                self.distanceS += act.distance
+            except:
+                pass
         return [self.pointS, self.ccalS, self.distanceS]
 
     def addActivity(self):
         print("1.Біг\n2.Прогулянка\n3.Велосипед")
+        print("4.Аеробіка\n5.Кросфіт")
         ans = int(input())
         if ans == 1:
             newActivity = Running(self)
@@ -57,6 +84,11 @@ class Persone:
             newActivity = Walking(self)
         elif ans == 3:
             newActivity = Cycling(self)
+        elif ans == 4:
+            newActivity = Aerobic(self)
+        elif ans == 5:
+            newActivity = CrossFit(self)
         newActivity.set_time()
+        newActivity.multiplier()
         self.activityList.append(newActivity)
         self.calculate_last_day()
