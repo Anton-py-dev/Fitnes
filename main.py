@@ -1,10 +1,12 @@
+from Fitnes.PersonList import PersonList
 from Fitnes.Persone import Persone
 from Fitnes.Activity import Activity, Running, Walking, Cycling
 
 
 class FitProgram:
     def __init__(self):
-        self.user = Persone("Default", 70)
+        self.PL = PersonList()
+        self.user = self.PL.choseUser()
 
     def menu(self):
         while True:
@@ -17,6 +19,7 @@ class FitProgram:
             elif ans == 3:
                 self.profile()
             elif ans == 4:
+                self.PL.save()
                 return
 
     def menu_main(self):
@@ -49,7 +52,7 @@ class FitProgram:
                 print("Дата народження:", self.user.birthday.strftime("%d %b %Y"))
             except:
                 pass
-            print("1. Динаміка ваги \n2. Додати поточну вагу\n3. Назад")
+            print("1. Динаміка ваги \n2. Додати поточну вагу\n3. Назад\n4. Видалити поточний профіль")
             ans = int(input())
             if ans == 1:
                 print("1. За рік \n2. За місяць")
@@ -64,6 +67,11 @@ class FitProgram:
                         print(i)
             if ans == 2:
                 self.user.setWeight(int(input("Введіть поточну вагу:")))
+            if ans == 4:
+                self.PL.delete(self.user)
+                if len(self.PL.list) == 0:
+                    self.PL.newUser()
+                self.user = self.PL.choseUser()
             else:
                 return
 
