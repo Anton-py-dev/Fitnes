@@ -3,32 +3,35 @@ from datetime import datetime, date, time
 
 class Activity:
     def __init__(self, p):
-        self.persone = p  # Привязує активність до особи
-        self.points = 0  # бали фізичної активності
-        self.ccal = 0  # кількість каллорій спалених в даній активності
+        self._person = p  # Привязує активність до особи
+        self._points = 0  # бали фізичної активності
+        self._ccal = 0  # кількість каллорій спалених в даній активності
         self.date = date.today()
         self.time = time(0, 0, 0, 0)
-        self.s = self.e = datetime.now()
+        self.start = self.end = datetime.now()
         self.note = ""
 
-    def __setPoints(self, points):
-        self.points = points
+    def get_points(self):
+        return self._points
+
+    def get_ccal(self):
+        return self._ccal
 
     def set_time(self):
         print("Дата:")
         self.date = date(int(input("Рік: ")), int(input("Місяць: ")), int(input("День: ")))
         print("Початок:")
-        self.s = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
+        self.start = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
         print("Кінець:")
-        self.e = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
-        self.time = self.e - self.s
+        self.end = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
+        self.time = self.end - self.start
 
     def start(self):
-        self.s = datetime.now()
+        self.start = datetime.now()
 
     def end(self):
-        self.e = datetime.now()
-        self.time = self.e - self.s
+        self.end = datetime.now()
+        self.time = self.end - self.start
 
     def multiplier(self):
         pass
@@ -40,7 +43,10 @@ class MovingEx(Activity):
         self.setDistance(int(input("Метри:")) / 1000)
 
     def setDistance(self, d):
-        self.distance = d  # Далність задається в кілометрах
+        self._distance = d  # Далність задається в кілометрах
+
+    def get_distance(self):
+        return self._distance
 
 
 class HathaYoga(Activity):
@@ -49,8 +55,8 @@ class HathaYoga(Activity):
         self.name = "Хатха-йога"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 273
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 273
+        self._points = self.time.seconds / 60 * 3
 
 
 class Bowling(Activity):
@@ -59,8 +65,8 @@ class Bowling(Activity):
         self.name = "Боулінг"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 270
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 270
+        self._points = self.time.seconds / 60 * 3
 
 
 class AquaAerobics(Activity):
@@ -69,8 +75,8 @@ class AquaAerobics(Activity):
         self.name = "Аквааеробіка"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 240
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 240
+        self._points = self.time.seconds / 60 * 3
 
 
 class Bodyflex(Activity):
@@ -79,8 +85,8 @@ class Bodyflex(Activity):
         self.name = "Бодіфлекс"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 260
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 260
+        self._points = self.time.seconds / 60 * 3
 
 
 class Gymnastics(Activity):
@@ -89,8 +95,8 @@ class Gymnastics(Activity):
         self.name = "Гімнастика"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 350
-        self.points = self.time.seconds / 60 * 5
+        self._ccal = self.time.seconds / 60 / 60 * 350
+        self._points = self.time.seconds / 60 * 5
 
 
 class JumpingRope(Activity):
@@ -99,8 +105,8 @@ class JumpingRope(Activity):
         self.name = "Скакалка"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 680
-        self.points = self.time.seconds / 60 * 8
+        self._ccal = self.time.seconds / 60 / 60 * 680
+        self._points = self.time.seconds / 60 * 8
 
 
 class Hoop(Activity):
@@ -109,8 +115,8 @@ class Hoop(Activity):
         self.name = "Обруч"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 375
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 375
+        self._points = self.time.seconds / 60 * 3
 
 
 class Pilates(Activity):
@@ -119,8 +125,8 @@ class Pilates(Activity):
         self.name = "Пілатес"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 150
-        self.points = self.time.seconds / 60 * 4
+        self._ccal = self.time.seconds / 60 / 60 * 150
+        self._points = self.time.seconds / 60 * 4
 
 
 class Callanetics(Activity):
@@ -129,8 +135,8 @@ class Callanetics(Activity):
         self.name = "Калланетика"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 310
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 310
+        self._points = self.time.seconds / 60 * 3
 
 
 class ModernDances(Activity):
@@ -139,8 +145,8 @@ class ModernDances(Activity):
         self.name = "Сучасні танці"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 265
-        self.points = self.time.seconds / 60 * 4
+        self._ccal = self.time.seconds / 60 / 60 * 265
+        self._points = self.time.seconds / 60 * 4
 
 
 class Ballet(Activity):
@@ -149,8 +155,8 @@ class Ballet(Activity):
         self.name = "Балет"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 750
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 750
+        self._points = self.time.seconds / 60 * 7
 
 
 class DiscoDancing(Activity):
@@ -159,8 +165,8 @@ class DiscoDancing(Activity):
         self.name = "Танці диско"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 400
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 400
+        self._points = self.time.seconds / 60 * 7
 
 
 class FigureSkating(Activity):
@@ -169,8 +175,8 @@ class FigureSkating(Activity):
         self.name = "Фігурне Катання"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 300
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 300
+        self._points = self.time.seconds / 60 * 7
 
 
 class Skiing(MovingEx):
@@ -179,8 +185,8 @@ class Skiing(MovingEx):
         self.name = "Ходьба на лижах"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 400
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 400
+        self._points = self.time.seconds / 60 * 7
 
 
 class DownhillSkiing(Activity):
@@ -189,8 +195,8 @@ class DownhillSkiing(Activity):
         self.name = "Швидкісний спуск на лижах"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 270
-        self.points = self.time.seconds / 60 * 2
+        self._ccal = self.time.seconds / 60 / 60 * 270
+        self._points = self.time.seconds / 60 * 2
 
 
 class WaterPolo(Activity):
@@ -199,8 +205,8 @@ class WaterPolo(Activity):
         self.name = "Водне поло"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 600
-        self.points = self.time.seconds / 60 * 5
+        self._ccal = self.time.seconds / 60 / 60 * 600
+        self._points = self.time.seconds / 60 * 5
 
 
 class Swimming(Activity):
@@ -210,18 +216,18 @@ class Swimming(Activity):
         self.setSpeed(int(input("km/h: ")))
 
     def setSpeed(self, s):
-        self.speed = s
+        self._speed = s
 
     def multiplier(self):
-        if self.speed >= 3:
-            self.ccal = self.time.seconds / 60 / 60 * 500
-        elif self.speed >= 2.4:
-            self.ccal = self.time.seconds / 60 / 60 * 460
-        elif self.speed >= 1.5:
-            self.ccal = self.time.seconds / 60 / 60 * 320
+        if self._speed >= 3:
+            self._ccal = self.time.seconds / 60 / 60 * 500
+        elif self._speed >= 2.4:
+            self._ccal = self.time.seconds / 60 / 60 * 460
+        elif self._speed >= 1.5:
+            self._ccal = self.time.seconds / 60 / 60 * 320
         else:
-            self.ccal = self.time.seconds / 60 / 60 * 210
-        self.points = self.time.seconds / 60 * 4
+            self._ccal = self.time.seconds / 60 / 60 * 210
+        self._points = self.time.seconds / 60 * 4
 
 
 class Rowing(Activity):
@@ -230,8 +236,8 @@ class Rowing(Activity):
         self.name = "Академічна гребля"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 210
-        self.points = self.time.seconds / 60 * 3
+        self._ccal = self.time.seconds / 60 / 60 * 210
+        self._points = self.time.seconds / 60 * 3
 
 
 class WaterSkis(Activity):
@@ -240,8 +246,8 @@ class WaterSkis(Activity):
         self.name = "Водні лижі"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 355
-        self.points = self.time.seconds / 60 * 5
+        self._ccal = self.time.seconds / 60 / 60 * 355
+        self._points = self.time.seconds / 60 * 5
 
 
 class TaiBo(Activity):
@@ -250,8 +256,8 @@ class TaiBo(Activity):
         self.name = "Тай-бо"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 800
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 800
+        self._points = self.time.seconds / 60 * 7
 
 
 class Badminton(Activity):
@@ -260,8 +266,8 @@ class Badminton(Activity):
         self.name = "Бадмінтон"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 405
-        self.points = self.time.seconds / 60 * 4
+        self._ccal = self.time.seconds / 60 / 60 * 405
+        self._points = self.time.seconds / 60 * 4
 
 
 class Golf(Activity):
@@ -270,8 +276,8 @@ class Golf(Activity):
         self.name = "Гольф"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 / 60 * 250
-        self.points = self.time.seconds / 60 * 7
+        self._ccal = self.time.seconds / 60 / 60 * 250
+        self._points = self.time.seconds / 60 * 7
 
 
 class Aerobic(Activity):
@@ -280,8 +286,8 @@ class Aerobic(Activity):
         self.name = "Аеробіка"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 * 8
-        self.points = self.time.seconds / 60 * 4
+        self._ccal = self.time.seconds / 60 * 8
+        self._points = self.time.seconds / 60 * 4
 
 
 class CrossFit(Activity):
@@ -290,8 +296,8 @@ class CrossFit(Activity):
         self.name = "Кросфіт"
 
     def multiplier(self):
-        self.ccal = self.time.seconds / 60 * 15
-        self.points = self.time.seconds / 60
+        self._ccal = self.time.seconds / 60 * 15
+        self._points = self.time.seconds / 60
 
 
 class Running(MovingEx):
@@ -300,8 +306,8 @@ class Running(MovingEx):
         self.name = "Біг"
 
     def multiplier(self):
-        self.ccal = self.distance * self.persone.weightDynamic[-1][0]
-        self.points = self.distance * 100
+        self._ccal = self._distance * self._person._weightDynamic[-1][0]
+        self._points = self._distance * 100
 
 
 class Walking(MovingEx):
@@ -310,28 +316,28 @@ class Walking(MovingEx):
         self.name = "Ходьба"
 
     def multiplier(self):
-        self.ccal = self.distance * self.persone.weightDynamic[-1][0] * 0.5
-        self.points = self.distance * 50
+        self._ccal = self._distance * self._person._weightDynamic[-1][0] * 0.5
+        self._points = self._distance * 50
 
 
 class Cycling(MovingEx):
     def __init__(self, p):
         super().__init__(p)
-        self.speed = 0
+        self._speed = 0
         self.name = "Велосипед"
         self.setSpeed(int(input("km/h: ")))
 
     def setSpeed(self, s):
-        self.speed = s
+        self._speed = s
 
     def multiplier(self):
-        if self.speed > 25:
-            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 12
-        elif self.speed > 20:
-            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 10
-        elif self.speed > 15:
-            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 8
+        if self._speed > 25:
+            self._ccal = self._distance / self._speed * self._person._weightDynamic[-1][0] * 12
+        elif self._speed > 20:
+            self._ccal = self._distance / self._speed * self._person._weightDynamic[-1][0] * 10
+        elif self._speed > 15:
+            self._ccal = self._distance / self._speed * self._person._weightDynamic[-1][0] * 8
         else:
-            self.ccal = self.distance / self.speed * self.persone.weightDynamic[-1][0] * 6
+            self._ccal = self._distance / self._speed * self._person._weightDynamic[-1][0] * 6
 
-        self.points = self.distance * 10
+        self._points = self._distance * 10
