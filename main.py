@@ -1,5 +1,5 @@
 from Fitnes.PersonList import PersonList
-from Fitnes.Persone import Persone
+from Fitnes.Person import Person
 from Fitnes.Activity import Activity, Running, Walking, Cycling
 
 
@@ -15,7 +15,7 @@ class FitProgram:
             if ans == 1:
                 self.menu_main()
             elif ans == 2:
-                self.user.activityList.print()
+                self.user._activityList.print()
             elif ans == 3:
                 self.profile()
             elif ans == 4:
@@ -24,11 +24,11 @@ class FitProgram:
 
     def menu_main(self):
         while True:
-            print("\t", self.user.name)
-            print("Вага: ", self.user.weightDynamic[-1][0])
-            print("Бали: ", self.user.pointS)
-            print("Км: ", self.user.distanceS)
-            print("Ккал: ", self.user.ccalS)
+            print("\t", self.user._name)
+            print("Вага: ", self.user._weightDynamic[-1][0])
+            print("Бали: ", self.user._pointS)
+            print("Км: ", self.user._distanceS)
+            print("Ккал: ", self.user._ccalS)
             print("1.Додати активність")
             print("2.Назад")
             ans = int(input())
@@ -39,7 +39,7 @@ class FitProgram:
 
     def profile(self):
         while True:
-            print(self.user.name)
+            print(self.user._name)
             try:
                 print("Male" if self.user.sex == 1 else "Female")
             except:
