@@ -1,5 +1,6 @@
 import pickle
-from Fitnes.Persone import Persone
+from Fitnes.Person import Person
+
 
 class PersonList:
     def __init__(self):
@@ -16,13 +17,13 @@ class PersonList:
             pickle.dump(self.list, f)
 
     def newUser(self):
-        self.list.append(Persone(input("Iм'я: "), int(input("Вага: "))))
+        self.list.append(Person(input("Iм'я: "), int(input("Вага: "))))
 
     def choseUser(self):
         print("Оберіть користувача:")
         print("0. Створити новий профіль")
         for i in range(len(self.list)):
-            print(f"{i+1}. {self.list[i].name}")
+            print(f"{i + 1}. {self.list[i].get_name()}")
         ans = int(input())
         if ans == 0:
             self.newUser()
