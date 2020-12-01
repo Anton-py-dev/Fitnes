@@ -1,5 +1,6 @@
 from datetime import datetime, date, time
 
+sec_to_min = 60
 
 class Activity:
     def __init__(self, p):
@@ -56,8 +57,10 @@ class HathaYoga(Activity):
         self.name = "Хатха-йога"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 273
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 273
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Bowling(Activity):
@@ -66,8 +69,10 @@ class Bowling(Activity):
         self.name = "Боулінг"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 270
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 270
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class AquaAerobics(Activity):
@@ -76,8 +81,10 @@ class AquaAerobics(Activity):
         self.name = "Аквааеробіка"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 240
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 240
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Bodyflex(Activity):
@@ -86,8 +93,10 @@ class Bodyflex(Activity):
         self.name = "Бодіфлекс"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 260
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 260
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Gymnastics(Activity):
@@ -96,8 +105,10 @@ class Gymnastics(Activity):
         self.name = "Гімнастика"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 350
-        self._points = self.time.seconds / 60 * 5
+        coefficient_ccal = 350
+        coefficient_poins = 5
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class JumpingRope(Activity):
@@ -106,8 +117,10 @@ class JumpingRope(Activity):
         self.name = "Скакалка"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 680
-        self._points = self.time.seconds / 60 * 8
+        coefficient_ccal = 680
+        coefficient_poins = 8
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Hoop(Activity):
@@ -116,8 +129,10 @@ class Hoop(Activity):
         self.name = "Обруч"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 375
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 375
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Pilates(Activity):
@@ -126,8 +141,10 @@ class Pilates(Activity):
         self.name = "Пілатес"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 150
-        self._points = self.time.seconds / 60 * 4
+        coefficient_ccal = 150
+        coefficient_poins = 4
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Callanetics(Activity):
@@ -136,8 +153,10 @@ class Callanetics(Activity):
         self.name = "Калланетика"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 310
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 310
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class ModernDances(Activity):
@@ -146,8 +165,10 @@ class ModernDances(Activity):
         self.name = "Сучасні танці"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 265
-        self._points = self.time.seconds / 60 * 4
+        coefficient_ccal = 265
+        coefficient_poins = 4
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Ballet(Activity):
@@ -156,8 +177,10 @@ class Ballet(Activity):
         self.name = "Балет"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 750
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 750
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class DiscoDancing(Activity):
@@ -166,8 +189,10 @@ class DiscoDancing(Activity):
         self.name = "Танці диско"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 400
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 400
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class FigureSkating(Activity):
@@ -176,8 +201,10 @@ class FigureSkating(Activity):
         self.name = "Фігурне Катання"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 300
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 300
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Skiing(MovingEx):
@@ -186,8 +213,10 @@ class Skiing(MovingEx):
         self.name = "Ходьба на лижах"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 400
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 400
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class DownhillSkiing(Activity):
@@ -196,8 +225,10 @@ class DownhillSkiing(Activity):
         self.name = "Швидкісний спуск на лижах"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 270
-        self._points = self.time.seconds / 60 * 2
+        coefficient_ccal = 270
+        coefficient_poins = 2
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class WaterPolo(Activity):
@@ -206,8 +237,10 @@ class WaterPolo(Activity):
         self.name = "Водне поло"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 600
-        self._points = self.time.seconds / 60 * 5
+        coefficient_ccal = 600
+        coefficient_poins = 5
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Swimming(Activity):
@@ -221,15 +254,16 @@ class Swimming(Activity):
         self._speed = s
 
     def multiplier(self):
+        coefficient_poins = 4
         if self._speed >= 3:
-            self._ccal = self.time.seconds / 60 / 60 * 500
+            self._ccal = self.time.seconds / sec_to_min / sec_to_min * 500
         elif self._speed >= 2.4:
-            self._ccal = self.time.seconds / 60 / 60 * 460
+            self._ccal = self.time.seconds / sec_to_min / sec_to_min * 460
         elif self._speed >= 1.5:
-            self._ccal = self.time.seconds / 60 / 60 * 320
+            self._ccal = self.time.seconds / sec_to_min / sec_to_min * 320
         else:
-            self._ccal = self.time.seconds / 60 / 60 * 210
-        self._points = self.time.seconds / 60 * 4
+            self._ccal = self.time.seconds / sec_to_min / sec_to_min * 210
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Rowing(Activity):
@@ -238,8 +272,10 @@ class Rowing(Activity):
         self.name = "Академічна гребля"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 210
-        self._points = self.time.seconds / 60 * 3
+        coefficient_ccal = 210
+        coefficient_poins = 3
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class WaterSkis(Activity):
@@ -248,8 +284,10 @@ class WaterSkis(Activity):
         self.name = "Водні лижі"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 355
-        self._points = self.time.seconds / 60 * 5
+        coefficient_ccal = 355
+        coefficient_poins = 5
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class TaiBo(Activity):
@@ -258,8 +296,10 @@ class TaiBo(Activity):
         self.name = "Тай-бо"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 800
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 800
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Badminton(Activity):
@@ -268,8 +308,10 @@ class Badminton(Activity):
         self.name = "Бадмінтон"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 405
-        self._points = self.time.seconds / 60 * 4
+        coefficient_ccal = 405
+        coefficient_poins = 4
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Golf(Activity):
@@ -278,8 +320,10 @@ class Golf(Activity):
         self.name = "Гольф"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 / 60 * 250
-        self._points = self.time.seconds / 60 * 7
+        coefficient_ccal = 250
+        coefficient_poins = 7
+        self._ccal = self.time.seconds / sec_to_min / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class Aerobic(Activity):
@@ -288,8 +332,10 @@ class Aerobic(Activity):
         self.name = "Аеробіка"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 * 8
-        self._points = self.time.seconds / 60 * 4
+        coefficient_ccal = 8
+        coefficient_poins = 4
+        self._ccal = self.time.seconds / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / sec_to_min * coefficient_poins
 
 
 class CrossFit(Activity):
@@ -298,8 +344,10 @@ class CrossFit(Activity):
         self.name = "Кросфіт"
 
     def multiplier(self):
-        self._ccal = self.time.seconds / 60 * 15
-        self._points = self.time.seconds / 60
+        coefficient_ccal = 15
+        coefficient_poins = 1
+        self._ccal = self.time.seconds / sec_to_min * coefficient_ccal
+        self._points = self.time.seconds / 60 * coefficient_poins
 
 
 class Running(MovingEx):
@@ -308,8 +356,10 @@ class Running(MovingEx):
         self.name = "Біг"
 
     def multiplier(self):
-        self._ccal = self._distance * self._person._weightDynamic[-1][0]
-        self._points = self._distance * 100
+        coefficient_ccal = 1
+        coefficient_poins = 100
+        self._ccal = self._distance * self._person._weightDynamic[-1][0] * coefficient_ccal
+        self._points = self._distance * coefficient_poins
 
 
 class Walking(MovingEx):
@@ -318,8 +368,10 @@ class Walking(MovingEx):
         self.name = "Ходьба"
 
     def multiplier(self):
-        self._ccal = self._distance * self._person._weightDynamic[-1][0] * 0.5
-        self._points = self._distance * 50
+        coefficient_ccal = 0.5
+        coefficient_poins = 50
+        self._ccal = self._distance * self._person._weightDynamic[-1][0] * coefficient_ccal
+        self._points = self._distance * coefficient_poins
 
 
 class Cycling(MovingEx):
