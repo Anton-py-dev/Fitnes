@@ -40,7 +40,7 @@ class Activity:
 class MovingEx(Activity):
     def __init__(self, p):
         super().__init__(p)
-        self.setDistance(int(input("Метри:")) / 1000)
+        self._distance = 0
 
     def setDistance(self, d):
         self._distance = d  # Далність задається в кілометрах
@@ -212,8 +212,9 @@ class WaterPolo(Activity):
 class Swimming(Activity):
     def __init__(self, p):
         super().__init__(p)
+        self._speed = 0
         self.name = "Плавання"
-        self.setSpeed(int(input("km/h: ")))
+
 
     def setSpeed(self, s):
         self._speed = s
@@ -325,7 +326,6 @@ class Cycling(MovingEx):
         super().__init__(p)
         self._speed = 0
         self.name = "Велосипед"
-        self.setSpeed(int(input("km/h: ")))
 
     def setSpeed(self, s):
         self._speed = s

@@ -16,10 +16,10 @@ class PersonList:
         with open("p.bin", "wb") as f:
             pickle.dump(self.list, f)
 
-    def newUser(self):
-        self.list.append(Person(input("Iм'я: "), int(input("Вага: "))))
+    def newUser(self, name, weight):
+        self.list.append(Person(name, weight))
 
-    def choseUser(self):
+    def choseUser(self):  # замість цієї функції буде функція, що повертає потрібний профіль з графічного інтерфейсу
         print("Оберіть користувача:")
         print("0. Створити новий профіль")
         for i in range(len(self.list)):

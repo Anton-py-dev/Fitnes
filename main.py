@@ -8,7 +8,7 @@ class FitProgram:
         self.PL = PersonList()
         self.user = self.PL.choseUser()
 
-    def menu(self):
+    def menu(self):  # тимчасова функція, непотрібна для графічного інтерфейсу
         while True:
             print("Меню: \n1.Глолвна \n2.Журнал \n3.Профіль \n4.Вихід")
             ans = int(input())
@@ -22,7 +22,7 @@ class FitProgram:
                 self.PL.save()
                 return
 
-    def menu_main(self):
+    def menu_main(self):  # тимчасова функція, непотрібна для графічного інтерфейсу
         while True:
             print("\t", self.user.get_name())
             print("Вага: ", self.user.get_weightDynamic()[-1][0])
@@ -37,7 +37,7 @@ class FitProgram:
             elif ans == 2:
                 return
 
-    def profile(self):
+    def profile(self):  # тимчасова функція, непотрібна для графічного інтерфейсу
         while True:
             print(self.user.get_name())
             try:

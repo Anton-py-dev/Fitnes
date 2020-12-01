@@ -97,19 +97,21 @@ class Person:
         return [self._pointS, self._ccalS, self._distanceS]
 
     def addActivity(self):
-        print("1.Біг\n2.Прогулянка\n3.Велосипед")
-        print("4.Аеробіка\n5.Кросфіт")
-        ans = int(input())
-        if ans == 1:
-            newActivity = Running(self)
-        elif ans == 2:
-            newActivity = Walking(self)
-        elif ans == 3:
-            newActivity = Cycling(self)
-        elif ans == 4:
-            newActivity = Aerobic(self)
-        elif ans == 5:
-            newActivity = CrossFit(self)
+        # print("1.Біг\n2.Прогулянка\n3.Велосипед")
+        # print("4.Аеробіка\n5.Кросфіт")
+        # ans = int(input())
+        # if ans == 1:
+        #     newActivity = Running(self)
+        # elif ans == 2:
+        #     newActivity = Walking(self)
+        # elif ans == 3:
+        #     newActivity = Cycling(self)
+        # elif ans == 4:
+        #     newActivity = Aerobic(self)
+        # elif ans == 5:
+        #     newActivity = CrossFit(self)
+        newActivity = Running(self) # Тут має бути метод який буде повертати правильний тип вправи з графічного
+        # інтерфейсу
         newActivity.set_time()
         newActivity.multiplier()
         self._activityList.append(newActivity)
