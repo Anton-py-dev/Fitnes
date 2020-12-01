@@ -19,7 +19,8 @@ class Activity:
 
     def set_time(self):
         print("Дата:")
-        self.date = date(int(input("Рік: ")), int(input("Місяць: ")), int(input("День: ")))
+        self.date = date(int(input("Рік: ")), int(input("Місяць: ")), int(input("День: ")))  # цей і в рядках нижче
+        # будуть замінені на меотди з графічного інтерфейсу date()
         print("Початок:")
         self.start = datetime.combine(self.date, time(int(input("Години: ")), int(input("Хвилини: ")), 0, 0))
         print("Кінець:")
