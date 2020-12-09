@@ -37,14 +37,14 @@ class ActivityList:
     def old_to_new_sort(self):
         self.li.sort(key=lambda act: act.start, reverse=False)
 
-    def print(self):
-        for act in self.li:
-            print(act.name)
-            print(act.date.strftime("%d %B"), ", ", act.start.strftime("%H:%M"), " - ", act.end.strftime("%H:%M"))
-            print("Тривалість: ", act.time)
-            try:
-                print("Відстань: ", act.get_distance());
-            except:
-                pass
-            print("Калорії: ", act.get_ccal())
-            print("Бали: ", act.get_points(), "\n")
+    # def print(self):
+    #     for act in self.li:
+    #         print(act.name)
+    #         print(act.date.strftime("%d %B"), ", ", act.start.strftime("%H:%M"), " - ", act.end.strftime("%H:%M"))
+    #         print("Тривалість: ", act.time)
+    #         try:
+    #             print("Відстань: ", act.get_distance());
+    #         except:
+    #             pass
+    #         print("Калорії: ", act.get_ccal())
+    #         print("Бали: ", act.get_points(), "\n")
