@@ -14,6 +14,7 @@ class ActivityList:
         t = datetime.now()
         t = datetime(t.year, t.month, t.day - 1, t.hour, t.minute)
         self.lastDayList.clear()
+        self.new_to_old_sort()
         for act in self.li:
             if act.start < t:
                 break
@@ -36,15 +37,3 @@ class ActivityList:
 
     def old_to_new_sort(self):
         self.li.sort(key=lambda act: act.start, reverse=False)
-
-    def print(self):
-        for act in self.li:
-            print(act.name)
-            print(act.date.strftime("%d %B"), ", ", act.start.strftime("%H:%M"), " - ", act.end.strftime("%H:%M"))
-            print("Тривалість: ", act.time)
-            try:
-                print("Відстань: ", act.get_distance());
-            except:
-                pass
-            print("Калорії: ", act.get_ccal())
-            print("Бали: ", act.get_points(), "\n")
